@@ -20,7 +20,7 @@ export function CheckPaymentPlaceholder() {
 
       <div className="flex-1 px-4 py-8 flex flex-col justify-between space-y-6">
         <div className="space-y-5">
-          {/* Phase Badge */}
+
           <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-[10px] tracking-wide uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
             Phase 2 Pipeline • Payment Context

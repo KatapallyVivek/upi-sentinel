@@ -62,7 +62,7 @@ export function HowItWorksModal({ isOpen, onClose }) {
         className="w-full max-w-md bg-[#12151B] border-t sm:border border-white/[0.12] rounded-t-3xl sm:rounded-2xl shadow-2xl p-6 space-y-5 animate-sentinel-in max-h-[85vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Handle for mobile pull aesthetic */}
+
         <div className="w-12 h-1 bg-white/20 rounded-full mx-auto sm:hidden -mt-2 mb-3" />
 
         <div className="flex items-start justify-between gap-3">
@@ -88,7 +88,7 @@ export function HowItWorksModal({ isOpen, onClose }) {
           Traditional UPI apps blindly route funds wherever a QR code or VPA points. Sentinel sits as an independent safety checkpoint before PIN authorization to ensure your money goes where you intended.
         </p>
 
-        {/* 3 Step Sequence */}
+
         <div className="space-y-3">
           {steps.map((step) => {
             const Icon = step.icon;
@@ -118,7 +118,7 @@ export function HowItWorksModal({ isOpen, onClose }) {
           })}
         </div>
 
-        {/* Privacy Note */}
+
         <div className="p-3 rounded-xl bg-black/30 border border-white/[0.06] text-[11px] text-[#94A3B8] flex items-center gap-2.5">
           <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>

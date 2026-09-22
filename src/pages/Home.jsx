@@ -31,9 +31,7 @@ export function Home() {
       />
 
       <div className="flex-1 px-4 py-5 space-y-6 pb-12">
-        {/* ==================================================
-            SECURITY STATUS (Product status indicator)
-            ================================================== */}
+        
         <section aria-label="Security Status">
           <Card
             variant="default"
@@ -64,7 +62,7 @@ export function Home() {
               <StatusIndicator status="ready" label="ARMED" pulse={true} />
             </div>
 
-            {/* Technical Operating Guardrails */}
+
             <div className="mt-3 pt-3 border-t border-white/[0.06] grid grid-cols-2 gap-2 text-[11px] text-[#94A3B8]">
               <div className="flex items-center gap-1.5 font-mono text-[10px]">
                 <Lock className="w-3.5 h-3.5 text-amber-500/80 shrink-0" />
@@ -78,9 +76,7 @@ export function Home() {
           </Card>
         </section>
 
-        {/* ==================================================
-            MAIN HERO SECTION
-            ================================================== */}
+        
         <section aria-label="Hero" className="space-y-4 pt-1">
           <div className="space-y-2.5">
             <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-[10px] tracking-wide uppercase">
@@ -101,7 +97,7 @@ export function Home() {
             </p>
           </div>
 
-          {/* Action CTAs */}
+
           <div className="space-y-2.5 pt-1">
             <Button
               variant="primary"
@@ -127,67 +123,58 @@ export function Home() {
           </div>
         </section>
 
-        {/* ==================================================
-            SAFETY CHECKPOINT SHOWCASE (Live Inspection Sample)
-            Illustrates the core problem: Intent Mismatch
-            ================================================== */}
+        
         <Section
-          eyebrow="Live Inspection Anatomy"
-          title="What Sentinel Catches"
-          subtitle="Real-time discrepancy detection before money leaves your account"
+          eyebrow="Hackathon Demo"
+          title="Demo Scenarios"
+          subtitle="Test Sentinel's core detection engine"
         >
-          <Card
-            variant="warning"
-            padding="md"
-            className="space-y-3 bg-[#130E10] border-red-500/30"
-          >
-            <div className="flex items-start justify-between gap-2 border-b border-white/[0.06] pb-2.5">
-              <div className="flex items-center gap-2">
-                <AlertOctagon className="w-4 h-4 text-red-400 shrink-0" />
-                <span className="text-xs font-semibold text-red-300">
-                  Intent Mismatch Intercepted
-                </span>
-              </div>
-              <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-red-500/20 text-red-300 border border-red-500/30 font-semibold">
-                ALERT
-              </span>
-            </div>
+          <div className="space-y-3">
+            <Card
+              variant="interactive"
+              padding="md"
+              className="border-white/[0.08] hover:border-amber-500/30"
+              onClick={() => {
+                navigate('/analysis', { state: { paymentContext: { message: 'Please pay ₹840 for electricity bill.' } } });
+              }}
+            >
+              <h3 className="text-sm font-bold text-[#F3F4F6] mb-1">1. Amount Mismatch</h3>
+              <p className="text-xs text-[#94A3B8]">
+                Expected: ₹840 <br/> Actual QR: ₹8,400
+              </p>
+            </Card>
 
-            <div className="space-y-2 text-xs">
-              <div className="p-2.5 rounded-lg bg-black/40 border border-white/[0.05] space-y-1">
-                <span className="text-[10px] uppercase font-mono text-[#64748B] block">
-                  User Stated Intent
-                </span>
-                <p className="font-medium text-[#F3F4F6] text-xs">
-                  Electricity Bill Payment (BESCOM) • ₹1,450.00
-                </p>
-              </div>
+            <Card
+              variant="interactive"
+              padding="md"
+              className="border-white/[0.08] hover:border-red-500/30"
+              onClick={() => {
+                navigate('/analysis', { state: { paymentContext: { message: 'I will send you ₹5,000. Scan this QR to receive it.' } } });
+              }}
+            >
+              <h3 className="text-sm font-bold text-[#F3F4F6] mb-1">2. SEND / RECEIVE Mismatch</h3>
+              <p className="text-xs text-[#94A3B8]">
+                Expected: RECEIVE <br/> Actual QR action: SEND
+              </p>
+            </Card>
 
-              <div className="p-2.5 rounded-lg bg-red-950/20 border border-red-500/20 space-y-1">
-                <span className="text-[10px] uppercase font-mono text-red-400/90 block">
-                  Actual Destination VPA
-                </span>
-                <div className="flex items-center justify-between gap-1 font-mono text-[11px] text-red-200">
-                  <span className="truncate">bescom.desk92@ybl</span>
-                  <span className="text-[9px] px-1.5 py-0.5 bg-red-500/20 text-red-300 rounded shrink-0">
-                    Individual Account
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-[11px] text-red-300/90 bg-red-950/30 p-2.5 rounded-lg border border-red-500/20 flex items-start gap-2 leading-relaxed">
-              <span className="font-bold text-red-400 shrink-0">Verdict:</span>
-              <span>
-                Personal savings account masquerading as utility desk. <strong>Do not enter UPI PIN.</strong>
-              </span>
-            </div>
-          </Card>
+            <Card
+              variant="interactive"
+              padding="md"
+              className="border-white/[0.08] hover:border-emerald-500/30"
+              onClick={() => {
+                navigate('/analysis', { state: { paymentContext: { message: 'Pay ₹840 to abc@upi for electricity.' } } });
+              }}
+            >
+              <h3 className="text-sm font-bold text-[#F3F4F6] mb-1">3. Matching Payment</h3>
+              <p className="text-xs text-[#94A3B8]">
+                Expected: ₹840 to abc@upi <br/> Actual QR: ₹840 to abc@upi
+              </p>
+            </Card>
+          </div>
         </Section>
 
-        {/* ==================================================
-            CORE SENTINEL ARCHITECTURE PRINCIPLES
-            ================================================== */}
+        
         <Section
           eyebrow="Security Architecture"
           title="Privacy-First Safety Layer"
@@ -244,7 +231,7 @@ export function Home() {
           </div>
         </Section>
 
-        {/* Quick Route Shortcuts to upcoming checkpoints */}
+
         <section aria-label="Direct Verification Tools" className="pt-1">
           <Card
             variant="interactive"
@@ -270,7 +257,7 @@ export function Home() {
         </section>
       </div>
 
-      {/* "How Sentinel Works" Explainer Modal */}
+
       <HowItWorksModal
         isOpen={isHowItWorksOpen}
         onClose={() => setIsHowItWorksOpen(false)}

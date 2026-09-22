@@ -25,10 +25,10 @@ import {
 export function CheckPayment() {
   const navigate = useNavigate();
 
-  // Active context source tab
+
   const [activeTab, setActiveTab] = useState('message'); // 'message' | 'invoice' | 'details'
 
-  // Input state with lazy initialization from previous context
+
   const [messageInput, setMessageInput] = useState(() => {
     const existing = getPaymentContext();
     return existing?.message || '';
@@ -37,7 +37,7 @@ export function CheckPayment() {
     return getPaymentContext() || null;
   });
 
-  // Update structured context whenever input changes
+
   const handleInputChange = (text) => {
     setMessageInput(text);
     if (text.trim().length > 0) {
@@ -55,7 +55,7 @@ export function CheckPayment() {
     }
   };
 
-  // Demo shortcut handler
+
   const handleApplyDemo = () => {
     setActiveTab('message');
     setMessageInput(DEMO_SCENARIO.message);
@@ -67,13 +67,13 @@ export function CheckPayment() {
     savePaymentContext(structured);
   };
 
-  // Clear input handler
+
   const handleClear = () => {
     setMessageInput('');
     setCapturedContext(null);
   };
 
-  // Navigate to analysis with context passed in state
+
   const handleContinue = () => {
     if (!capturedContext) return;
     savePaymentContext(capturedContext);
@@ -96,9 +96,7 @@ export function CheckPayment() {
       />
 
       <div className="flex-1 px-4 py-5 space-y-5 pb-12">
-        {/* ==================================================
-            SOURCE SELECTION TABS
-            ================================================== */}
+        
         <div className="space-y-1.5">
           <label className="text-[11px] font-mono uppercase tracking-wider text-[#94A3B8]">
             Context Source
@@ -141,9 +139,7 @@ export function CheckPayment() {
           </div>
         </div>
 
-        {/* ==================================================
-            CONTEXT INPUT AREA
-            ================================================== */}
+        
         <div className="space-y-2">
           <div className="flex items-center justify-between gap-2">
             <label
@@ -157,7 +153,7 @@ export function CheckPayment() {
                 : 'Expected Payment Notes'}
             </label>
 
-            {/* Subtle Demo Scenario Button */}
+
             <button
               type="button"
               onClick={handleApplyDemo}
@@ -207,9 +203,7 @@ export function CheckPayment() {
           </div>
         </div>
 
-        {/* ==================================================
-            CONTEXT CAPTURED PREVIEW
-            ================================================== */}
+        
         {capturedContext ? (
           <Section
             eyebrow="Extracted Intent"
@@ -226,7 +220,7 @@ export function CheckPayment() {
               padding="none"
               className="divide-y divide-white/[0.06] border-white/[0.1] bg-[#12151B]"
             >
-              {/* Purpose */}
+
               <div className="px-4 py-3 flex items-center justify-between gap-3">
                 <span className="text-xs text-[#94A3B8] font-normal">
                   Purpose
@@ -236,7 +230,7 @@ export function CheckPayment() {
                 </span>
               </div>
 
-              {/* Expected amount */}
+
               <div className="px-4 py-3 flex items-center justify-between gap-3">
                 <span className="text-xs text-[#94A3B8] font-normal">
                   Expected amount
@@ -246,7 +240,7 @@ export function CheckPayment() {
                 </span>
               </div>
 
-              {/* Expected recipient */}
+
               <div className="px-4 py-3 flex items-center justify-between gap-3">
                 <span className="text-xs text-[#94A3B8] font-normal">
                   Expected recipient
@@ -256,7 +250,7 @@ export function CheckPayment() {
                 </span>
               </div>
 
-              {/* Source */}
+
               <div className="px-4 py-3 flex items-center justify-between gap-3 bg-black/20">
                 <span className="text-xs text-[#64748B] font-normal">
                   Source
@@ -282,10 +276,7 @@ export function CheckPayment() {
           </Card>
         )}
 
-        {/* ==================================================
-            TRUST / PRIVACY NOTE
-            Understated, honest, no exaggerated claims
-            ================================================== */}
+        
         <div className="p-3 rounded-xl bg-[#0E1015] border border-white/[0.05] flex items-center gap-2.5">
           <Shield className="w-4 h-4 text-[#94A3B8] shrink-0" />
           <p className="text-[11px] text-[#94A3B8] leading-normal">
@@ -293,9 +284,7 @@ export function CheckPayment() {
           </p>
         </div>
 
-        {/* ==================================================
-            PRIMARY ACTION
-            ================================================== */}
+        
         <div className="pt-2">
           <Button
             variant="primary"
