@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-canvas: #0B0D10;
+  --color-surface-1: #12151B;
+  --color-surface-2: #181C24;
+  --color-surface-3: #212732;
+  --color-surface-hover: #262D3B;
+  
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-muted: rgba(255, 255, 255, 0.14);
+  --color-border-strong: rgba(255, 255, 255, 0.22);
+
+  --color-accent-amber: #F59E0B;
+  --color-accent-amber-hover: #D97706;
+  --color-accent-amber-subtle: rgba(245, 158, 11, 0.10);
+  --color-accent-amber-border: rgba(245, 158, 11, 0.25);
+
+  --color-status-safe: #10B981;
+  --color-status-safe-subtle: rgba(16, 185, 129, 0.10);
+  --color-status-safe-border: rgba(16, 185, 129, 0.25);
+
+  --color-status-warning: #EF4444;
+  --color-status-warning-subtle: rgba(239, 68, 68, 0.10);
+  --color-status-warning-border: rgba(239, 68, 68, 0.25);
+
+  --color-status-standby: #F59E0B;
+  --color-status-standby-subtle: rgba(245, 158, 11, 0.10);
+
+  --color-text-primary: #F3F4F6;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+}
+
+/* Custom Base & Utility Styling */
+:root {
+  color-scheme: dark;
+  --app-height: 100vh;
+}
+
+html, body {
+  background-color: #0B0D10;
+  color: #F3F4F6;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+/* Screen transition subtle animation */
+@keyframes sentinelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-sentinel-in {
+  animation: sentinelFadeIn 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Pulse animation with low distraction */
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtlePulse 2.4s ease-in-out infinite;
+}
+
+/* Minimal custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0D10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E232E;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2E3646;
+}
+
+/* Touch feedback helper */
+.tap-active:active {
+  transform: scale(0.98);
+  transition: transform 120ms ease;
+}
